@@ -11,7 +11,7 @@ class NmapService(object):
         nmapCmd = self.getCmd()
         print(nmapCmd)
         p = subprocess.Popen(nmapCmd, stdout=subprocess.PIPE)
-        parseNmapResult(p.stdout.read())
+        self.parseNmapResult(p.stdout.read())
 
     def getCmd(self):
         ini = IniUtils("nmap.ini")
@@ -22,5 +22,5 @@ class NmapService(object):
         networkSegment = ini.getProperties("nmap", "networkSegment")
         return "%s %s -e %s -p%s %s" % (nmapbin, param, ifDevice, portRange, networkSegment)
     
-    def parseNmapResult(nmapResult):
+    def parseNmapResult(self, nmapResult):
         print(nmapResult)
