@@ -17,4 +17,4 @@ class DeviceInfo(BaseModel):
     device_name = Column(String, index=True)
     host_name = Column(String, index=True)
     os = Column(String, index=True)
-
+    comment = Column(String, index=True)
