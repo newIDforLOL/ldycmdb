@@ -12,7 +12,7 @@ class IniUtils(object):
         configFilePath = os.path.abspath(os.path.dirname(currentPath) + os.path.sep + "../../resources/ini")
         configFile = os.path.join(configFilePath, iniFileName)
         self.cfg = ConfigParser()
-        self.cfg.read(configFile)
+        self.cfg.read(configFile, encoding="utf-8-sig")
 
     def getSections(self):
         return self.cfg.sections()
