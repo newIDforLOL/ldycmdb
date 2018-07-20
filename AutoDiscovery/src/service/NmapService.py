@@ -3,6 +3,8 @@
 
 from utils.IniUtils import IniUtils
 import subprocess
+import re
+import json
 
 
 class NmapService(object):
@@ -17,10 +19,8 @@ class NmapService(object):
         ini = IniUtils("nmap.ini")
         nmapBin = ini.getProperties("nmap", "bin")
         param = ini.getProperties("nmap", "param")
-        ifDevice = ini.getProperties("nmap", "ifDevice")
-        portRange = ini.getProperties("nmap", "portRange")
         networkSegment = ini.getProperties("nmap", "networkSegment")
-        return "%s %s -e %s -p%s %s" % (nmapBin, param, ifDevice, portRange, networkSegment)
+        return "%s %s %s" % (nmapBin, param, networkSegment)
     
     def parseNmapResult(self, nmapResult):
         nr_arr = nmapResult.split('\n')
