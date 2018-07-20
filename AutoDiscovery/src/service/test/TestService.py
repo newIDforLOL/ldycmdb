@@ -2,6 +2,7 @@
 
 
 from common.db.redis.conn.RedisConn import RedisConn
+from common.db.redis.model.DeviceInfo import DeviceInfo
 
 
 class TestService(object):
@@ -18,3 +19,16 @@ class TestService(object):
 
     def testGet(self):
         print(self.r.get("testKey"))
+
+    def test(self):
+        print(123123)
+        device = DeviceInfo()
+        device.deviceId = 1
+        device.code = "kjIHknfdkaski"
+        device.ip = "127.0.0.1"
+        print(device.toDict())
+
+
+if __name__ == "__main__":
+    t = TestService()
+    t.test()
